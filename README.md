@@ -1,2 +1,0 @@
-# angul
-angular project
