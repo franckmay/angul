@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employe} from '../employe'
+import { FormsModule } from '@angular/forms';
+import { EMPLOYES } from '../mock-employe';
 
 @Component({
   selector: 'app-employe',
@@ -8,10 +10,7 @@ import { Employe} from '../employe'
 })
 export class EmployeComponent implements OnInit {
 
-  employe : Employe = {
-    id: 0,
-    nom: 'Ned Stark'
-  }
+  employes = EMPLOYES;
 
   constructor() { }
 

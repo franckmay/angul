@@ -1,3 +1,6 @@
-<h2>{{employe.nom | uppercase}} Details</h2>
-<div><span>id: </span>{{employe.id}}</div>
-<div><span>name: </span>{{employe.nom}}</div>
+<h2>Mes employes</h2>
+<ul class="employes">
+  <li *ngFor="let employe of employes">
+    <span class="badge">{{employe.id}}</span> {{employe.nom}}
+  </li>
+</ul>
