@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Employe } from './employe';
 import { EMPLOYES } from './mock-employe';
+import { Observable, of } from 'rxjs';
+import { MessageService } from './message.service';
+
 
 
 @Injectable({
@@ -8,9 +11,12 @@ import { EMPLOYES } from './mock-employe';
 })
 export class EmployeService {
 
-  constructor() { }
+  constructor(private mesService : MessageService) { }
 
-  getEmployes(): Employe[] {
-    return EMPLOYES;
+  getEmployes(): Observable<Employe[]> {
+    const employes = of (EMPLOYES);
+    this.mesService.add('Messages services : employes recupérés');
+    return employes;
   }
+
 }

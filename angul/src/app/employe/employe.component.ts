@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employe } from '../employe'
 import { FormsModule } from '@angular/forms';
 import { EmployeService } from '../employe.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-employe',
@@ -10,23 +11,25 @@ import { EmployeService } from '../employe.service';
 })
 export class EmployeComponent implements OnInit {
 
-  employes : Employe[] = [];
+  employes: Employe[] = [];
+  selectedEmploye?: Employe;
 
-    
-    constructor(private empService: EmployeService) { }
+
+
+  constructor(private empService: EmployeService, private mesService: MessageService) { }
 
   ngOnInit() {
     this.getEmployes();
 
   }
 
-  selectedEmploye?: Employe;
   onSelect(employe: Employe): void {
     this.selectedEmploye = employe;
+    this.mesService.add(`EmployeComponent : employé selectionné id=${employe.id}`);
   }
 
   getEmployes(): void {
-    this.employes = this.empService.getEmployes();
+    this.empService.getEmployes().subscribe(employes => this.employes = employes);
   }
 
 }
