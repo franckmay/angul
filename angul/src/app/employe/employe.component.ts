@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Employe} from '../employe'
+import { Employe } from '../employe'
 import { FormsModule } from '@angular/forms';
-import { EMPLOYES } from '../mock-employe';
+import { EmployeService } from '../employe.service';
 
 @Component({
   selector: 'app-employe',
@@ -10,11 +10,23 @@ import { EMPLOYES } from '../mock-employe';
 })
 export class EmployeComponent implements OnInit {
 
-  employes = EMPLOYES;
+  employes : Employe[] = [];
 
-  constructor() { }
+    
+    constructor(private empService: EmployeService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getEmployes();
+
+  }
+
+  selectedEmploye?: Employe;
+  onSelect(employe: Employe): void {
+    this.selectedEmploye = employe;
+  }
+
+  getEmployes(): void {
+    this.employes = this.empService.getEmployes();
   }
 
 }

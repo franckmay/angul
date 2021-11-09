@@ -3,15 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello/hello.component';
 import { EmployeComponent } from './employe/employe.component';
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule } from '@angular/forms';
+import { EmployeDetailComponent } from './employe-detail/employe-detail.component'; // <-- NgModel lives here
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent,
-    EmployeComponent
+    EmployeComponent,
+    EmployeDetailComponent
   ],
   imports: [
     BrowserModule,

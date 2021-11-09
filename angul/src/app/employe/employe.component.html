@@ -1,6 +1,13 @@
 <h2>Mes employes</h2>
+
+
 <ul class="employes">
-  <li *ngFor="let employe of employes">
+  <li *ngFor="let employe of employes" 
+  [class.selected]="employe === selectedEmploye" 
+  (click)="onSelect(employe)">
     <span class="badge">{{employe.id}}</span> {{employe.nom}}
   </li>
 </ul>
+
+
+<app-employe-detail [employe]="selectedEmploye"></app-employe-detail>

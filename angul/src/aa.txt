@@ -1,0 +1,56 @@
+child: new DropdownButton <String>(
+                      hint: new Text('LOAD PATH FROM'),
+                      value: 'type de fichier',
+                      items: <String>['FROM AUDIO', 'FROM IMAGE', 'FROM VIDEO', 'FROM ANY','CUSTOM FORMAT'].map((String value) {
+                      return new DropdownMenuItem<String>(
+                      value: value,
+                      child: new Text(value),
+                    );
+                 }).toList(),
+                      
+                      onChanged: (value) => setState(() {
+                            
+                            if (_pickingType != FileType.CUSTOM) {
+                              _controller.text = _extension = '';
+                            }
+
+                            switch(value) { 
+   
+  
+   case "FROM AUDIO": { 
+           _pickingType = FileType.AUDIO; 
+
+   } 
+   break;
+   
+    case "FROM VIDEO": { 
+           _pickingType = FileType.VIDEO; 
+
+   } 
+   break; 
+   
+   case "FROM IMAGE": { 
+          _pickingType = FileType.IMAGE; 
+
+   } 
+   break;
+   
+    case "FROM ANY": { 
+           _pickingType = FileType.ANY; 
+
+   } 
+   break; 
+
+    case "CUSTOM FORMAT": { 
+          _pickingType = FileType.CUSTOM; 
+
+   } 
+   break; 
+      
+   default: { 
+      _pickingType = FileType.ANY; 
+   }
+   break; 
+} 
+                          })),
+                ),
