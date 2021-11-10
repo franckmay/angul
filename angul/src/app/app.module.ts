@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { EmployeComponent } from './employe/employe.component';
 import { FormsModule } from '@angular/forms';
 import { EmployeDetailComponent } from './employe-detail/employe-detail.component';
-import { MessagesComponent } from './messages/messages.component'; // <-- NgModel lives here
+import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeComponent,
     EmployeDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

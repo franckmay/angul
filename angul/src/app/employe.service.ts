@@ -19,4 +19,10 @@ export class EmployeService {
     return employes;
   }
 
+  getEmploye(id: number): Observable<Employe> {
+    const employe = EMPLOYES.find(h=> h.id === id)!;
+    this.mesService.add(`Employe service : employes recupérés id =${id}`);
+    return of(employe);
+  }
+
 }

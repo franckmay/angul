@@ -1,0 +1,6 @@
+<h2>Top Employes</h2>
+<div class="employes-menu">
+  <a *ngFor="let employe of employes" routerLink="/details/{{employe.id}}">
+    {{employe.nom}}
+  </a>
+</div>

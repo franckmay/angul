@@ -23,11 +23,6 @@ export class EmployeComponent implements OnInit {
 
   }
 
-  onSelect(employe: Employe): void {
-    this.selectedEmploye = employe;
-    this.mesService.add(`EmployeComponent : employé selectionné id=${employe.id}`);
-  }
-
   getEmployes(): void {
     this.empService.getEmployes().subscribe(employes => this.employes = employes);
   }
