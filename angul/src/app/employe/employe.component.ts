@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employe } from '../employe'
-import { FormsModule } from '@angular/forms';
 import { EmployeService } from '../employe.service';
-import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-employe',
@@ -16,7 +14,7 @@ export class EmployeComponent implements OnInit {
 
 
 
-  constructor(private empService: EmployeService, private mesService: MessageService) { }
+  constructor(private empService: EmployeService) { }
 
   ngOnInit() {
     this.getEmployes();
@@ -24,7 +22,21 @@ export class EmployeComponent implements OnInit {
   }
 
   getEmployes(): void {
-    this.empService.getEmployes().subscribe(employes => this.employes = employes);
+    this.empService.getEmployes()
+    .subscribe(employes => this.employes = employes);
   }
+  add(nom : string): void {
+    nom = nom.trim();
+    if (!nom) {
+      return;
+    }
+    this.empService.addEmploye({nom} as Employe)
+    .subscribe(employe => {this.employes.push(employe);})
+  }
+
+  delete(employe: Employe): void { 
+    this.employes = this.employes.filter(h => h !==employe);
+    this.empService.deleteEmploye(employe.id).subscribe();
+   }
 
 }

@@ -1,10 +1,20 @@
 <h2>Mes employes</h2>
 
+<div>
+  <label for="new-employe">Nom de l'employe</label>
+  <input id="new-employe" #nomEmploye />
+
+  <button class="add-button" (click)="add(nomEmploye.value);
+   nomEmploye.value = ''">Ajouter un employe
+  </button>
+</div>
+
 
 <ul class="employes">
   <li *ngFor="let employe of employes">
     <a routerLink="/details/{{employe.id}}">
       <span class="badge">{{employe.id}}</span> {{employe.nom}}
     </a>
+    <button class="delete" title="delete employe" (click)="delete(employe)">x</button>
   </li>
 </ul>

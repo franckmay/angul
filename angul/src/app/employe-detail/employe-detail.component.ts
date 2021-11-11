@@ -29,6 +29,11 @@ employe : Employe | undefined;
     this.emplService.getEmploye(id)
       .subscribe(employe => this.employe = employe);
   }
+  save (): void {
+    if (this.employe) {
+      this.emplService.updateEmployee(this.employe).subscribe(() => this.goBack());
+    }
+  }
   goBack(): void {
     this.location.back();
   }
