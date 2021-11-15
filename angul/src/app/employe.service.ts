@@ -64,7 +64,10 @@ export class EmployeService {
       );
   }
 
-  /** PUT: update un employe sur le server */
+  /** PUT: update un employe sur le server 
+   * @param employe - employé à modifier 
+   * @returns Observable<Employe>  
+  */
   updateEmployee(employe: Employe): Observable<any> {
     return this.http.put(this.employeUrl, employe, this.httpOptions).pipe(
       tap(_ => this.log(`employé mis a jour id=${employe.id}`)),
@@ -83,7 +86,10 @@ export class EmployeService {
         catchError(this.handleError<Employe>('deleteEmploye')));
   }
 
-  /** GET: recupérer les employés dont les noms correspondent avec les termes de recherche */
+  /** GET: recupérer les employés
+   *  dont les noms correspondent avec les termes de recherche 
+   * @param term - terme à recherché
+   */
   searchEmployees(term: string): Observable<Employe[]> {
     if (!term.trim()) {
       //si aucun terme de recherche, un array d'employes vide est retourné
