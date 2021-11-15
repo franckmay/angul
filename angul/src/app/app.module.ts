@@ -10,7 +10,8 @@ import { EmployeComponent } from './employe/employe.component';
 import { FormsModule } from '@angular/forms';
 import { EmployeDetailComponent } from './employe-detail/employe-detail.component';
 import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeSearchComponent } from './employe-search/employe-search.component'; // <-- NgModel lives here
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgM
     EmployeDetailComponent,
     MessagesComponent,
     DashboardComponent,
+    EmployeSearchComponent,
 
   ],
   imports: [

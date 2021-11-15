@@ -13,7 +13,7 @@ import { MessageService } from './message.service';
 })
 export class EmployeService {
 
-  private employeUrl = 'api/lemp'; // url to web api
+  private employeUrl = 'api/employes'; // url to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -40,11 +40,26 @@ export class EmployeService {
       catchError(this.handleError<Employe>(`getEmploye id=${id}`))
     );
   }
+
+  /** GET employe par id. retourne 404 undefined quand il n est pas trouvé */
+  getEmployeNo404<Data>(id : number): Observable<Employe>{
+    const url= `${this.employeUrl}/?id=${id}`;
+    return this.http.get<Employe[]>(url)
+    .pipe(
+      map(employes => employes[0]), // retourne un element tableau {0|1}
+      tap(h=> {
+        const outcome = h ? `recupéré` : `non trouvé`;
+         this.log((`${outcome} employe id=${id}`))
+      }),
+      catchError(this.handleError<Employe>(`getEmploye id=${id}`))
+    );
+  }
+
   /** POST :  ajouter un nouvel employe sur le server */
   addEmploye(employe: Employe): Observable<Employe> {
     return this.http.post<Employe>(this.employeUrl, employe, this.httpOptions)
       .pipe(
-        tap((newEmploye: Employe) => this.log(` emmployé ajouté w/ id = ${newEmploye.id}`)),
+        tap((newEmploye: Employe) => this.log(`employé ajouté w/ id=${newEmploye.id}`)),
         catchError(this.handleError<Employe>('addEmploye'))
       );
   }
@@ -69,13 +84,22 @@ export class EmployeService {
   }
 
   /** GET: recupérer les employés dont les noms correspondent avec les termes de recherche */
+  searchEmployees(term: string): Observable<Employe[]> {
+    if (!term.trim()) {
+      //si aucun terme de recherche, un array d'employes vide est retourné
+      return of([]);
+    }
+    return this.http.get<Employe[]>(`${this.employeUrl}/?nom=${term}`).pipe(
+        tap(x => x.length ?
+          this.log(`employé correspondant trouvé "${term} "`) :
+          this.log(`aucun employé correspondant" ${term} "`)),
+        catchError(this.handleError<Employe[]>('searchEmployees', []))
+      );
 
-  //log un message employeService avec le MessageService
-  private log(message: string) {
-    this.mesService.add(`EmployeService: ${message}`);
   }
 
 
+  
   /**
  * Handle Http operation that failed.
  * Let the app continue.
@@ -95,5 +119,12 @@ export class EmployeService {
       return of(result as T);
     };
   }
+
+  //log un message employeService avec le MessageService
+  private log(message: string) {
+    this.mesService.add(`EmployeService: ${message}`);
+  }
+
+
 
 }

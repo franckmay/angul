@@ -19,25 +19,19 @@ export class InMemoryDataService  implements InMemoryDbService{
       { id: 8, nom: 'cateline stark' },
       { id: 9, nom: 'theon stark' },
       { id: 10, nom: 'egrite stark' },
-      { id: 11, nom: 'odor stark' }
-    ];
-    const lemp = [
-      { id: 1, nom: 'brandon stark' },
-      { id: 2, nom: 'lyanna stark' },
-      { id: 3, nom: 'eddard stark' },
-      { id: 4, nom: 'dickon stark' },
-      { id: 5, nom: 'rob stark' },
-      { id: 6, nom: 'john stark' },
-      { id: 7, nom: 'sanza stark' },
-      { id: 8, nom: 'arya stark' },
-      { id: 9, nom: 'theon stark' },
-      { id: 10, nom: 'egrite stark' },
       { id: 11, nom: 'odor stark' },
       { id: 12, nom: 'brandon stark' },
-      
-      
+      { id: 13, nom: 'Bombasto' },
+      { id: 14, nom: 'Celeritas' },
+      { id: 15, nom: 'Magneta' },
+      { id: 16, nom: 'RubberMan' },
+      { id: 17, nom: 'Dynama' },
+      { id: 18, nom: 'Dr IQ' },
+      { id: 19, nom: 'Magma' },
+      { id: 20, nom: 'Tornado' }
     ];
-    return {lemp};
+    
+    return {employes};
   }
 
  // Remplace la méthode genId pour s'assurer qu'un employé ait toujours un identifiant.
