@@ -9,7 +9,7 @@ export class InMemoryDataService  implements InMemoryDbService{
   createDb() {
 
     const employes = [
-      { id: 1, nom: 'brandon stark' },
+      { id: 1, nom: 'brandon stark', competence: 'comptabilité', superieur: 'GRH' },
       { id: 2, nom: 'rickon stark' },
       { id: 3, nom: 'john stark' },
       { id: 4, nom: 'dickon stark' },
@@ -30,8 +30,13 @@ export class InMemoryDataService  implements InMemoryDbService{
       { id: 19, nom: 'Magma' },
       { id: 20, nom: 'Tornado' }
     ];
+
+    const competences = ['comptabilité', 'developpement logiciel',
+    'administration système', 'droit',
+    'secretariat', 'sécurité',
+    'entretient', 'gestion des ressources humaines'];
     
-    return {employes};
+    return {employes, competences};
   }
 
  // Remplace la méthode genId pour s'assurer qu'un employé ait toujours un identifiant.

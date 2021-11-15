@@ -14,6 +14,7 @@ import { MessageService } from './message.service';
 export class EmployeService {
 
   private employeUrl = 'api/employes'; // url to web api
+  private compUrl = 'api/competences'; // url to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -21,6 +22,13 @@ export class EmployeService {
   constructor(
     private mesService: MessageService,
     private http: HttpClient) { }
+
+getCompetences(): Observable<string[]> {
+  return this.http.get<string[]>(this.compUrl)
+  .pipe(tap(_ => this.log('liste des competences')),
+  catchError(this.handleError<string[]>('getCompetences', [])));
+  
+}
 
 
   /** get employes depuis le server */

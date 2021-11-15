@@ -6,6 +6,14 @@
     <label for="employe-name">Nom de l employe: </label>
     <input id="employe-name" [(ngModel)]="employe.nom" placeholder="nom">
   </div>
+  <div>
+    <label for="employe-name">Superieur: </label>
+    <input id="employe-name" [(ngModel)]="employe.superieur" >
+  </div>
+  <div>
+    <label for="employe-name">Competences: </label>
+    <input id="employe-name" [(ngModel)]="employe.competence" >
+  </div>
   <button (click)="goBack()"> Retour </button>
   <button (click)="save()">Enregistrer</button>
   

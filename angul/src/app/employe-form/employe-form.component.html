@@ -1,0 +1,49 @@
+<h1>Employe Form</h1>
+
+{{ model | json }}
+
+<div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit(nom.value)" #empForm="ngForm">
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="model.nom" #nom="ngModel" required>
+            <div [hidden]="nom.valid || nom.pristine" class="alert alert-danger">
+                Le nom est requis
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="superieur">superieur</label>
+            <input type="text" class="form-control" name="superieur" id="superieur" [(ngModel)]="model.superieur">
+        </div>
+
+        <div class="form-group">
+            <label for="competence">Competences des Employés</label>
+            <select class="form-control" id="competence" name="competence" [(ngModel)]="model.competence" required>
+                <option *ngFor="let com of competences" [value]="com">{{com}}</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-default" (click)="newEmp(); empForm.reset()">
+            Nouvel employe
+        </button>
+        <button type="submit" class="btn btn-success" [disabled]="!empForm.form.valid">Valider</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">nom: </div>
+      <div class="col-xs-9">{{ model.nom }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">competence: </div>
+      <div class="col-xs-9">{{ model.competence }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">superieur: </div>
+      <div class="col-xs-9">{{ model.superieur }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Modifier</button>
+  </div>

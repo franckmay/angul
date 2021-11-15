@@ -10,7 +10,10 @@ import { EmployeService } from '../employe.service';
 export class EmployeComponent implements OnInit {
 
   employes: Employe[] = [];
+
+  tab : Employe[] = [];
   selectedEmploye?: Employe;
+  nouveau = false;
 
 
 
@@ -23,7 +26,7 @@ export class EmployeComponent implements OnInit {
 
   getEmployes(): void {
     this.empService.getEmployes()
-    .subscribe(employes => this.employes = employes);
+    .subscribe(employes => {this.employes = employes});
   }
   add(nom : string): void {
     nom = nom.trim();
