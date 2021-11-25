@@ -1,0 +1,24 @@
+<p-treeTable [value]="files" [columns]="selectedColumns">
+    <ng-template pTemplate="caption">
+        <div style="text-align:left">
+            <p-multiSelect  [(ngModel)]="selectedColumns" optionLabel="header"
+                        selectedItemsLabel="{0} columns selected" [style]="{'width': '20em'}" defaultLabel="Choose Columns"></p-multiSelect>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns; let i = index">
+                <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                {{rowData[col.field]}}
+            </td>
+        </tr>            
+    </ng-template>
+</p-treeTable>
+

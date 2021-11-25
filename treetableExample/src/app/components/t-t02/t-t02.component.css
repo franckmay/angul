@@ -1,0 +1,13 @@
+.kb-row {
+    background-color: rgba(0,0,0,.15) !important;
+}
+
+.kb-cell {
+    font-weight: 700;
+    color: #FF5252;
+    text-decoration: line-through;
+}
+
+.ptt {
+
+}

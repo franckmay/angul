@@ -8,7 +8,7 @@ import { PhotoserviceService } from './services/photoservice.service';
 })
 export class AppComponent {
   dockBasicItems: MenuItem[] = [];
-  images: any[]= [];
+  images: any[] = [];
 
   ngOnInit() {
     this.dockBasicItems = [
@@ -34,11 +34,27 @@ export class AppComponent {
       }
 
     ];
-    
-  }
-
-  choix(chemin: string): void {
 
   }
- 
+
+  choix(chemin: string): string {
+    let rep: string = '';
+    switch (chemin) {
+      case 'App Store':
+        rep = 'tt02';
+        break;
+      case 'Photos':
+        rep = 'tt03';
+        break;
+      case 'Trash':
+        rep = 'tt04';
+        break;
+
+      default:
+        rep = 'trtable';
+        break;
+    }
+    return rep;
+  }
+
 }

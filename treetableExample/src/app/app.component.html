@@ -3,8 +3,8 @@
 <div class="dock-window">
     <p-dock [model]="dockBasicItems" position="left">
         <ng-template pTemplate="item" let-item>
-            <a routerLink="/trtable">   
-                <img [src]="item.icon" [alt]="item.label" width="100%"></a>
+            <a routerLink="{{choix(item.label)}}">   
+                <img [src]="item.icon" [alt]="item.label" width="100%"> </a>
         </ng-template>
     </p-dock>   
 </div>

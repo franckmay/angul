@@ -11,26 +11,39 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { GalleriaModule } from 'primeng/galleria';
 import { TerminalModule } from 'primeng/terminal';
-import { TreeModule } from 'primeng/tree';
-
+import { MultiSelectModule } from 'primeng/multiselect';
+import {ButtonModule} from 'primeng/button';
 import { TreeTableModule } from 'primeng/treetable';
 
 import { DockModule } from 'primeng/dock';
 
 import { TreeTableComponent } from './components/tree-table/tree-table.component';
+import { TT02Component } from './components/t-t02/t-t02.component';
+import { TT03Component } from './components/t-t03/t-t03.component';
+import { TT04Component } from './components/t-t04/t-t04.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TreeTableComponent
+    TreeTableComponent,
+    TT02Component,
+    TT03Component,
+    TT04Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DockModule, MenubarModule, ToastModule, DialogModule,
-    TreeTableModule, TreeModule, GalleriaModule, TerminalModule
+    MultiSelectModule,
+    DockModule,
+    MenubarModule,
+    ToastModule,
+    DialogModule,
+    TreeTableModule,
+    GalleriaModule,
+    ButtonModule,
+    TerminalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

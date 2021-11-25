@@ -1,0 +1,32 @@
+<p-treeTable [value]="files" [columns]="cols">
+    <ng-template pTemplate="caption">
+        fichiers
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <th style="width: 10rem">
+                <p-button icon="pi pi-cog"></p-button>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns; let i = index">
+                <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                {{rowData[col.field]}}
+            </td>
+            <td>
+                <p-button icon="pi pi-search" styleClass="p-button-success" [style]="{'margin-right': '.5em'}"></p-button>
+                <p-button icon="pi pi-pencil" styleClass="p-button-warning"></p-button>
+            </td>
+        </tr>            
+    </ng-template>
+    <ng-template pTemplate="summary">
+            <div style="text-align:left">
+                <p-button icon="pi pi-refresh"></p-button>
+            </div>
+    </ng-template>
+</p-treeTable>

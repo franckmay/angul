@@ -1,0 +1,17 @@
+<p-treeTable  [value]="files" [columns]="cols">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+        <tr [ngClass]="{'kb-row': rowData.size.endsWith('kb')}">
+            <td *ngFor="let col of columns; let i = index" [ngClass]="{'kb-cell': col.field === 'size' && rowData.size.endsWith('kb')}">
+                <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                {{rowData[col.field]}}
+            </td>
+        </tr>            
+    </ng-template>
+</p-treeTable>
