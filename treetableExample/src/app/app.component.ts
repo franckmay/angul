@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import {TreeTableModule} from 'primeng/treetable';
-import {TreeNode} from 'primeng/api';
-import { NoeudService } from './services/noeud.service';
+import { Component } from '@angular/core'; import { MenuItem, MessageService } from 'primeng/api';
+import { PhotoserviceService } from './services/photoservice.service';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +7,38 @@ import { NoeudService } from './services/noeud.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'treetableExample';
-  files: TreeNode[] = [];
-  cols: any[] = [];
-
-  constructor(private noeud_service: NoeudService) { }
+  dockBasicItems: MenuItem[] = [];
+  images: any[]= [];
 
   ngOnInit() {
-      this.noeud_service.getFilesystem().then(files => this.files = files);
+    this.dockBasicItems = [
+      {
+        label: 'Finder',
+        icon: "assets/finder.svg"
+      },
+      {
+        label: 'App Store',
+        icon: "assets/appstore.svg"
+      },
+      {
+        label: 'Trash',
+        icon: "assets/terminal.svg"
+      },
+      {
+        label: 'Photos',
+        icon: "assets/photos.svg"
+      },
+      {
+        label: 'Trash',
+        icon: "assets/trash.png"
+      }
 
-      this.cols = [
-          { field: 'name', header: 'Name' },
-          { field: 'size', header: 'Size' },
-          { field: 'type', header: 'Type' }
-      ];
+    ];
+    
   }
+
+  choix(chemin: string): void {
+
+  }
+ 
 }
